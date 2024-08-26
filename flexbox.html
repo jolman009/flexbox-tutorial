@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Layout</title>
     <link rel="stylesheet" href="styles.css">
+  
+
 </head>
 <body>
 
@@ -22,7 +24,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1><strong>Batter Up Training Facility</strong></h1>
-            <p>This website has some subtext that goes here under the main title. It's a smaller font and the color is lower contrast.</p>
+            <p class="text1">This website has some subtext that goes here under the main title. It's a smaller font and the color is lower contrast.</p>
             <button>Sign up</button>
         </div>
         <div class="hero-image">
@@ -32,30 +34,39 @@
 
     <section class="info">
         <h2>Elevate Your Game</h2>
+
         <div class="info-grid">
-            <div class="info-item">
-                <div class="info-box">
-                <img src="images/batting1.jpg" alt="batter up logo" style="max-height: 100%; max-width: 100%;"></img>
-                </div>
-                <p>this is some subtext under an illustration or image</p>
-            </div>
-            <div class="info-item">
-                <div class="info-box">
-               <img src="images/batting2.jpg" alt="batter up logo" style="max-height: 100%; max-width: 100%;"></div>
-                <p>this is some subtext under an illustration or image</p>
-            </div>
-            <div class="info-item">
-                <div class="info-box">
-                <img src="images/batting3.jpg" alt="batter up logo" style="max-height: 100%; max-width: 100%;"></div>
-                <p>this is some subtext under an illustration or image</p>
-            </div>
-            <div class="info-item">
-                <div class="info-box">
-                <img src="images/batting1.jpg" alt="batter up logo" style="max-height: 100%; max-width: 100%;"></div>
-                <p>this is some subtext under an illustration or image</p>
-            </div>
+           
+        <div class="image-flexbox">
+        <div class="image-item">
+            <img src="images/batting1.jpg" alt="Image 1">
+            <div class="image-caption">Click To Enlarge</div>
         </div>
-    </section>
+        <div class="image-item">
+            <img src="images/batting2.jpg" alt="Image 2">
+            <div class="image-caption">Click To Enlarge</div>
+        </div>
+        <div class="image-item">
+            <img src="images/batting3.jpg" alt="Image 3">
+            <div class="image-caption">Click To Enlarge</div>
+        </div>
+        <div class="image-item">
+            <img src="images/batting1.jpg" alt="Image 4">
+            <div class="image-caption">Click To Enlarge</div>
+        </div>
+    </div>
+
+   <!-- Lightbox Code that presents popup image-->
+   
+   <div class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="Lightbox Image">
+            <div class="lightbox-caption"></div>
+        </div>
+    </div>       
+    </div>
+</section>
 
     <section class="quote">
         <p>“Success is the sum of small efforts repeated day in and day out.”</p>
@@ -65,14 +76,45 @@
     <section class="cta">
         <div class="cta-content">
             <h2>Call to action! It's time!</h2>
-            <p>Sign up for our product by clicking that button right over there!</p>
-            <button>Sign up</button>
+            <p class="cta-text">Sign up for our product by clicking that button right over there!</p>
+            <button class="button2">Sign up</button>
         </div>
     </section>
 
     <footer class="footer">
         <p id="opening">Copyright © The Odin Project 2021</p>
     </footer>
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageItems = document.querySelectorAll('.image-item');
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImg = lightbox.querySelector('img');
+            const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+            const closeLightbox = lightbox.querySelector('.close-lightbox');
 
+            imageItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    const caption = this.querySelector('.image-caption');
+                    
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightboxCaption.textContent = caption.textContent;
+                    
+                    lightbox.style.display = 'flex';
+                });
+            });
+
+            closeLightbox.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+            });
+
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
