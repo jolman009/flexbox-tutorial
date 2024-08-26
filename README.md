@@ -57,3 +57,24 @@ Go to your GitHub repo on the web and click the Settings button as shown in the 
 Click on Pages on the left side bar.
 Change the Branch from None to main and click Save.
 It may take a few minutes (the GitHub website says up to 10), but your project should be accessible over the web from your-github-username.github.io/your-github-repo-name (obviously substituting your own details in the link).
+
+
+
+<style>
+.hide {
+  display: none;
+}
+    
+.myDIV:hover + .hide {
+  display: block;
+  color: red;
+}
+</style>
+
+
+
+
+<h2>Display an Element on Hover</h2>
+
+<div class="myDIV">Hover over me.</div>
+<div class="hide">I am shown when someone hovers over the div above.</div>
